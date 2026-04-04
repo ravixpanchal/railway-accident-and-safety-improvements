@@ -196,67 +196,89 @@ section[data-testid="stSidebar"] .stMultiSelect [data-baseweb="tag"] [data-basew
 .hero{{
   background:{BG_HERO};
   border:1px solid {BORDER_COLOR};
-  border-radius:22px;
-  padding:3rem 2rem 2.5rem;
+  border-radius:24px;
+  padding:3.2rem 2.5rem 2.8rem;
   margin-bottom:2rem;
   text-align:center;
   position:relative;
   overflow:hidden;
   animation:fadeUp .7s ease both;
+  box-shadow:0 0 60px {GLOW}, 0 1px 0 rgba(255,255,255,0.04) inset;
 }}
 .hero::before{{
   content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse 70% 60% at 20% 30%,{GLOW},transparent),
-             radial-gradient(ellipse 50% 40% at 80% 70%,{GLOW},transparent);
+  background:
+    radial-gradient(ellipse 80% 70% at 15% 20%,{GLOW},transparent),
+    radial-gradient(ellipse 60% 50% at 85% 75%,{GLOW},transparent),
+    radial-gradient(ellipse 40% 40% at 50% 50%,rgba(99,179,237,0.04),transparent);
   pointer-events:none;
 }}
 .hero::after{{
-  content:'';position:absolute;top:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,transparent,{ACCENT},{ACCENT2},transparent);
-  border-radius:22px 22px 0 0;
+  content:'';position:absolute;top:0;left:10%;right:10%;height:2px;
+  background:linear-gradient(90deg,transparent,{ACCENT},{ACCENT2},{ACCENT},transparent);
+  border-radius:0 0 2px 2px;
+  filter:blur(1px);
 }}
 @keyframes fadeUp{{from{{opacity:0;transform:translateY(-18px);}}to{{opacity:1;transform:translateY(0);}}}}
 
 .eyebrow{{
-  display:inline-flex;align-items:center;gap:6px;
+  display:inline-flex;align-items:center;gap:7px;
   background:{TAG_BG};border:1px solid {TAG_BORDER};
   color:{TAG_TEXT};font-family:'Syne',sans-serif;
-  font-size:.7rem;font-weight:700;letter-spacing:.12em;
-  text-transform:uppercase;padding:.3rem .9rem;border-radius:50px;margin-bottom:1.1rem;
+  font-size:.68rem;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;padding:.35rem 1rem;border-radius:50px;
+  margin-bottom:1.3rem;
+  box-shadow:0 2px 12px {GLOW};
 }}
 .hero-title{{
   font-family:'Syne',sans-serif;
   font-size:clamp(1.8rem,4vw,3rem);font-weight:800;
-  color:{TEXT_PRIMARY};line-height:1.15;letter-spacing:-.03em;margin:0 0 .9rem;
+  color:{TEXT_PRIMARY};line-height:1.2;letter-spacing:-.03em;
+  margin:0 0 1.4rem;display:flex;flex-direction:column;align-items:center;gap:.55rem;
 }}
 .hero-title .hl{{
   background:linear-gradient(135deg,{ACCENT} 0%,{ACCENT2} 100%);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
 }}
-.hero-sub{{
-  font-size:clamp(.88rem,1.5vw,1.05rem);color:{TEXT_SECONDARY};
-  max-width:600px;margin:0 auto 1.5rem;line-height:1.65;font-weight:400;
+.hero-title .hero-sub-inline{{
+  font-family:'DM Sans',sans-serif;
+  font-size:clamp(.82rem,1.35vw,.98rem);
+  font-weight:400;letter-spacing:0;
+  color:{TEXT_SECONDARY};
+  line-height:1.65;
+  max-width:560px;
+  padding:.55rem 1.1rem;
+  background:{OBS_BG};
+  border:1px solid {BORDER_COLOR};
+  border-radius:10px;
+  margin-top:.2rem;
+  -webkit-text-fill-color:{TEXT_SECONDARY};
+  background-clip:unset;
+  -webkit-background-clip:unset;
 }}
 .hero-tags{{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;}}
 .hero-tag{{
-  background:{TAG_BG};border:1px solid {BORDER_COLOR};color:{TEXT_MUTED};
-  font-family:'JetBrains Mono',monospace;font-size:.72rem;
-  padding:.25rem .7rem;border-radius:6px;
+  background:{TAG_BG};border:1px solid {TAG_BORDER};color:{TAG_TEXT};
+  font-family:'JetBrains Mono',monospace;font-size:.72rem;font-weight:500;
+  padding:.3rem .85rem;border-radius:50px;
+  transition:background .2s,border-color .2s;
 }}
+.hero-tag:hover{{background:{ACCENT};border-color:{ACCENT};color:#fff;}}
 
 /* ── KPI Grid ── */
 .kpi-grid{{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
-  gap:.85rem;margin-bottom:1.8rem;
+  grid-template-columns:repeat(auto-fit,minmax(145px,1fr));
+  gap:.9rem;margin-bottom:1.8rem;
 }}
 .kpi-card{{
   background:{BG_CARD};border:1px solid {BORDER_COLOR};
-  border-radius:14px;padding:1.2rem 1rem 1rem;text-align:center;
-  backdrop-filter:blur(12px);
-  transition:transform .22s cubic-bezier(.34,1.56,.64,1),border-color .22s,box-shadow .22s;
+  border-radius:16px;padding:1.3rem 1rem 1.1rem;text-align:center;
+  backdrop-filter:blur(16px);
+  transition:transform .25s cubic-bezier(.34,1.56,.64,1),border-color .25s,box-shadow .25s;
   position:relative;overflow:hidden;
   animation:cardIn .5s ease both;
+  box-shadow:0 2px 12px rgba(0,0,0,0.12);
 }}
 .kpi-card:nth-child(1){{animation-delay:.05s;}}
 .kpi-card:nth-child(2){{animation-delay:.10s;}}
@@ -268,52 +290,62 @@ section[data-testid="stSidebar"] .stMultiSelect [data-baseweb="tag"] [data-basew
 .kpi-card::before{{
   content:'';position:absolute;top:0;left:0;right:0;height:2px;
   background:linear-gradient(90deg,{ACCENT},{ACCENT2});
-  opacity:0;transition:opacity .25s;border-radius:14px 14px 0 0;
+  opacity:0;transition:opacity .25s;border-radius:16px 16px 0 0;
 }}
-.kpi-card:hover{{transform:translateY(-5px) scale(1.02);border-color:{BORDER_ACCENT};box-shadow:0 14px 38px {GLOW};}}
+.kpi-card:hover{{
+  transform:translateY(-6px) scale(1.025);
+  border-color:{BORDER_ACCENT};
+  box-shadow:0 20px 48px {GLOW}, 0 4px 16px rgba(0,0,0,0.15);
+}}
 .kpi-card:hover::before{{opacity:1;}}
-.kpi-icon{{font-size:1.7rem;margin-bottom:.4rem;display:block;}}
+.kpi-icon{{font-size:1.8rem;margin-bottom:.45rem;display:block;filter:drop-shadow(0 2px 6px {GLOW});}}
 .kpi-val{{
-  font-family:'Syne',sans-serif;font-size:1.65rem;font-weight:800;
-  color:{TEXT_PRIMARY};line-height:1;
+  font-family:'Syne',sans-serif;font-size:1.7rem;font-weight:800;
+  color:{TEXT_PRIMARY};line-height:1;letter-spacing:-.02em;
 }}
 .kpi-label{{
-  font-size:.68rem;color:{TEXT_MUTED};
-  text-transform:uppercase;letter-spacing:.1em;margin-top:.3rem;font-weight:600;
+  font-size:.67rem;color:{TEXT_MUTED};
+  text-transform:uppercase;letter-spacing:.11em;margin-top:.35rem;font-weight:700;
 }}
-.kpi-sub{{font-size:.75rem;color:{TEXT_SECONDARY};margin-top:.2rem;}}
+.kpi-sub{{font-size:.74rem;color:{TEXT_SECONDARY};margin-top:.2rem;}}
 
 /* ── Section header ── */
 .sec-hdr{{
-  display:flex;align-items:center;gap:.7rem;
-  margin:2rem 0 1rem;padding-bottom:.65rem;
+  display:flex;align-items:center;gap:.75rem;
+  margin:2.2rem 0 1.1rem;padding-bottom:.7rem;
   border-bottom:1px solid {BORDER_COLOR};
 }}
 .sec-num{{
-  width:28px;height:28px;background:{NUM_BG};color:{NUM_CLR};
-  font-family:'JetBrains Mono',monospace;font-size:.7rem;font-weight:600;
-  border-radius:7px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;
+  width:30px;height:30px;background:{NUM_BG};color:{NUM_CLR};
+  font-family:'JetBrains Mono',monospace;font-size:.7rem;font-weight:700;
+  border-radius:8px;display:inline-flex;align-items:center;justify-content:center;
+  flex-shrink:0;border:1px solid {TAG_BORDER};
+  box-shadow:0 2px 8px {GLOW};
 }}
 .sec-title{{
-  font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;
+  font-family:'Syne',sans-serif;font-size:1.07rem;font-weight:700;
   color:{TEXT_PRIMARY};letter-spacing:-.02em;
 }}
 
 /* ── Observation box ── */
 .obs-box{{
-  background:{OBS_BG};border-left:3px solid {OBS_BORDER};
-  border-radius:0 10px 10px 0;padding:.85rem 1.1rem;margin-top:.7rem;
-  font-size:.875rem;color:{TEXT_SECONDARY};line-height:1.65;
+  background:{OBS_BG};
+  border-left:3px solid {OBS_BORDER};
+  border-radius:0 12px 12px 0;
+  padding:.9rem 1.2rem;margin-top:.8rem;
+  font-size:.875rem;color:{TEXT_SECONDARY};line-height:1.7;
+  box-shadow:inset 0 0 20px rgba(99,179,237,0.03);
 }}
 .obs-box strong{{color:{TEXT_PRIMARY};}}
 
 /* ── Chart wrapper ── */
 .chart-wrap{{
   background:{BG_CARD};border:1px solid {BORDER_COLOR};
-  border-radius:14px;padding:.4rem;backdrop-filter:blur(8px);
-  transition:border-color .2s;
+  border-radius:16px;padding:.5rem;backdrop-filter:blur(8px);
+  transition:border-color .2s,box-shadow .2s;
+  box-shadow:0 2px 16px rgba(0,0,0,0.08);
 }}
-.chart-wrap:hover{{border-color:{BORDER_ACCENT};}}
+.chart-wrap:hover{{border-color:{BORDER_ACCENT};box-shadow:0 4px 24px {GLOW};}}
 
 /* ── Tabs ── */
 .stTabs [data-baseweb="tab-list"]{{
@@ -541,8 +573,11 @@ if sel_types:     fdf = fdf[fdf["Occurrence type"].isin(sel_types)]
 st.markdown(f"""
 <div class="hero">
   <div class="eyebrow">🛡️ Data-Driven Safety Research</div>
-  <h1 class="hero-title">Railway Accident<br><span class="hl">Analysis Dashboard</span></h1>
-  <p class="hero-sub">Exploring {len(df):,} European railway investigations to surface patterns, causes, and safety opportunities across {df['Country'].nunique()} countries.</p>
+  <h1 class="hero-title">
+    <span>Railway Accident</span>
+    <span class="hl">Analysis Dashboard</span>
+    <span class="hero-sub-inline">Exploring {len(df):,} European railway investigations to surface patterns, causes, and safety opportunities across {df['Country'].nunique()} countries.</span>
+  </h1>
   <div class="hero-tags">
     <span class="hero-tag">ERAIL Database</span>
     <span class="hero-tag">2002 – 2025</span>
