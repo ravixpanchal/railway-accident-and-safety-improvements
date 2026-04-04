@@ -113,9 +113,83 @@ section[data-testid="stSidebar"]{{
   border-right:1px solid {BORDER_COLOR}!important;
   transition:background .35s;
 }}
-section[data-testid="stSidebar"] *{{
+section[data-testid="stSidebar"] .stMarkdown,
+section[data-testid="stSidebar"] label,
+section[data-testid="stSidebar"] p,
+section[data-testid="stSidebar"] span:not(.st-emotion-cache-*) {{
   color:{TEXT_SECONDARY}!important;
   font-family:'DM Sans',sans-serif!important;
+}}
+
+/* ── Sidebar button (theme toggle) ── */
+section[data-testid="stSidebar"] .stButton > button {{
+  background:{TAG_BG}!important;
+  color:{TAG_TEXT}!important;
+  border:1px solid {TAG_BORDER}!important;
+  border-radius:10px!important;
+  font-family:'DM Sans',sans-serif!important;
+  font-weight:600!important;
+  font-size:.85rem!important;
+  padding:.55rem 1rem!important;
+  width:100%!important;
+  transition:all .2s!important;
+  cursor:pointer!important;
+}}
+section[data-testid="stSidebar"] .stButton > button:hover {{
+  background:{ACCENT}!important;
+  color:#fff!important;
+  border-color:{ACCENT}!important;
+  transform:translateY(-1px)!important;
+  box-shadow:0 4px 16px {GLOW}!important;
+}}
+
+/* ── Sidebar slider ── */
+section[data-testid="stSidebar"] .stSlider label {{
+  color:{TEXT_SECONDARY}!important;
+  font-size:.82rem!important;
+}}
+section[data-testid="stSidebar"] .stSlider [data-testid="stTickBarMin"],
+section[data-testid="stSidebar"] .stSlider [data-testid="stTickBarMax"] {{
+  color:{TEXT_MUTED}!important;
+  font-size:.72rem!important;
+}}
+section[data-testid="stSidebar"] .stSlider [data-baseweb="slider"] div[role="slider"] {{
+  background:{ACCENT}!important;
+  border-color:{ACCENT}!important;
+}}
+section[data-testid="stSidebar"] .stSlider [data-baseweb="slider"] [data-testid="stSliderThumbValue"] {{
+  color:{TEXT_PRIMARY}!important;
+  font-size:.8rem!important;
+  font-family:'JetBrains Mono',monospace!important;
+}}
+
+/* ── Sidebar multiselect ── */
+section[data-testid="stSidebar"] .stMultiSelect label {{
+  color:{TEXT_SECONDARY}!important;
+  font-size:.82rem!important;
+}}
+section[data-testid="stSidebar"] .stMultiSelect [data-baseweb="select"] {{
+  background:{BG_CARD}!important;
+  border:1px solid {BORDER_COLOR}!important;
+  border-radius:8px!important;
+}}
+section[data-testid="stSidebar"] .stMultiSelect [data-baseweb="select"] *,
+section[data-testid="stSidebar"] .stMultiSelect input::placeholder {{
+  color:{TEXT_SECONDARY}!important;
+  font-family:'DM Sans',sans-serif!important;
+  font-size:.83rem!important;
+}}
+section[data-testid="stSidebar"] .stMultiSelect [data-baseweb="tag"] {{
+  background:{TAG_BG}!important;
+  border:1px solid {TAG_BORDER}!important;
+  border-radius:6px!important;
+}}
+section[data-testid="stSidebar"] .stMultiSelect [data-baseweb="tag"] span {{
+  color:{TAG_TEXT}!important;
+  font-size:.78rem!important;
+}}
+section[data-testid="stSidebar"] .stMultiSelect [data-baseweb="tag"] [data-baseweb="icon"] svg {{
+  fill:{TAG_TEXT}!important;
 }}
 
 /* ── Hero ── */
@@ -265,13 +339,17 @@ section[data-testid="stSidebar"] *{{
 
 /* ── Sidebar helpers ── */
 .sb-logo{{
-  font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:800;
-  color:{TEXT_PRIMARY};display:flex;align-items:center;gap:8px;margin-bottom:.5rem;
+  font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:800;
+  color:{TEXT_PRIMARY}!important;display:flex;align-items:center;gap:8px;
+  margin-bottom:.6rem;padding:.4rem 0;
 }}
-.sb-div{{height:1px;background:{BORDER_COLOR};margin:.9rem 0;}}
+.sb-div{{height:1px;background:{BORDER_COLOR};margin:1rem 0;}}
 .sb-sec{{
-  font-family:'DM Sans',sans-serif;font-size:.68rem;font-weight:600;
-  letter-spacing:.1em;text-transform:uppercase;color:{TEXT_MUTED};margin-bottom:.5rem;
+  font-family:'DM Sans',sans-serif;font-size:.72rem;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:{TEXT_SECONDARY}!important;
+  margin-bottom:.45rem;padding:.15rem 0;
+  display:flex;align-items:center;gap:6px;
 }}
 
 /* ── Footer ── */
