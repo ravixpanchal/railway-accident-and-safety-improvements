@@ -115,8 +115,8 @@ section[data-testid="stSidebar"]{{
 }}
 section[data-testid="stSidebar"] .stMarkdown,
 section[data-testid="stSidebar"] label,
-section[data-testid="stSidebar"] p,
-section[data-testid="stSidebar"] span:not(.st-emotion-cache-*) {{
+section[data-testid="stSidebar"] p:not(button p),
+section[data-testid="stSidebar"] .stMarkdown span {{
   color:{TEXT_SECONDARY}!important;
   font-family:'DM Sans',sans-serif!important;
 }}
@@ -392,7 +392,12 @@ section[data-testid="stSidebar"] .stMultiSelect [data-baseweb="tag"] [data-basew
   .hero-title{{font-size:1.55rem;}}
 }}
 
-#MainMenu,footer,header{{visibility:hidden;}}
+#MainMenu,footer{{visibility:hidden;}}
+/* keep header visible so sidebar collapse arrow works */
+header[data-testid="stHeader"]{{background:transparent!important;}}
+/* but hide the deploy/share button inside header */
+header[data-testid="stHeader"] .stDeployButton,
+header[data-testid="stHeader"] [data-testid="stDecoration"]{{display:none!important;}}
 </style>
 """, unsafe_allow_html=True)
 
@@ -536,7 +541,8 @@ if sel_types:     fdf = fdf[fdf["Occurrence type"].isin(sel_types)]
 st.markdown(f"""
 <div class="hero">
   <div class="eyebrow">🛡️ Data-Driven Safety Research</div>
-  <h1 class="hero-title">Railway Accident<br><span class="hl">Analysis Dashboard</span><br><span style="font-size:.9rem;font-weight:400;color:rgb(148,163,184);margin-top:.8rem;display:block;line-height:1.6;">Exploring  {len(df):,} European railway investigations to surface patterns, causes, and safety opportunities across {df['Country'].nunique()} countries.</span></h1>
+  <h1 class="hero-title">Railway Accident<br><span class="hl">Analysis Dashboard</span></h1>
+  <p class="hero-sub">Exploring {len(df):,} European railway investigations to surface patterns, causes, and safety opportunities across {df['Country'].nunique()} countries.</p>
   <div class="hero-tags">
     <span class="hero-tag">ERAIL Database</span>
     <span class="hero-tag">2002 – 2025</span>
