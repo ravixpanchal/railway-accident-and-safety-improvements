@@ -145,51 +145,96 @@ section[data-testid="stSidebar"] .stButton > button:hover {{
 
 /* ── Sidebar slider ── */
 section[data-testid="stSidebar"] .stSlider label {{
-  color:{TEXT_SECONDARY}!important;
-  font-size:.82rem!important;
+  color:{TEXT_SECONDARY}!important;font-size:.82rem!important;
 }}
 section[data-testid="stSidebar"] .stSlider [data-testid="stTickBarMin"],
 section[data-testid="stSidebar"] .stSlider [data-testid="stTickBarMax"] {{
-  color:{TEXT_MUTED}!important;
-  font-size:.72rem!important;
+  color:{TEXT_MUTED}!important;font-size:.72rem!important;
 }}
 section[data-testid="stSidebar"] .stSlider [data-baseweb="slider"] div[role="slider"] {{
-  background:{ACCENT}!important;
-  border-color:{ACCENT}!important;
+  background:{ACCENT}!important;border-color:{ACCENT}!important;
 }}
 section[data-testid="stSidebar"] .stSlider [data-baseweb="slider"] [data-testid="stSliderThumbValue"] {{
-  color:{TEXT_PRIMARY}!important;
-  font-size:.8rem!important;
+  color:{TEXT_PRIMARY}!important;font-size:.8rem!important;
   font-family:'JetBrains Mono',monospace!important;
 }}
 
-/* ── Sidebar multiselect ── */
+/* ── Sidebar multiselect — fully theme-aware ── */
 section[data-testid="stSidebar"] .stMultiSelect label {{
-  color:{TEXT_SECONDARY}!important;
-  font-size:.82rem!important;
+  color:{TEXT_SECONDARY}!important;font-size:.82rem!important;font-weight:600!important;
 }}
-section[data-testid="stSidebar"] .stMultiSelect [data-baseweb="select"] {{
-  background:{BG_CARD}!important;
-  border:1px solid {BORDER_COLOR}!important;
-  border-radius:8px!important;
+
+/* Dropdown control box */
+section[data-testid="stSidebar"] .stMultiSelect [data-baseweb="select"] > div:first-child {{
+  background:{BG_SIDEBAR}!important;
+  border:1.5px solid {BORDER_COLOR}!important;
+  border-radius:10px!important;
+  box-shadow:none!important;
+  transition:border-color .2s,box-shadow .2s!important;
+  min-height:42px!important;
 }}
-section[data-testid="stSidebar"] .stMultiSelect [data-baseweb="select"] *,
-section[data-testid="stSidebar"] .stMultiSelect input::placeholder {{
-  color:{TEXT_SECONDARY}!important;
+section[data-testid="stSidebar"] .stMultiSelect [data-baseweb="select"] > div:first-child:hover,
+section[data-testid="stSidebar"] .stMultiSelect [data-baseweb="select"] > div:first-child:focus-within {{
+  border-color:{ACCENT}!important;
+  box-shadow:0 0 0 3px {GLOW}!important;
+}}
+
+/* Placeholder + input text */
+section[data-testid="stSidebar"] .stMultiSelect [data-baseweb="select"] input,
+section[data-testid="stSidebar"] .stMultiSelect [data-baseweb="select"] input::placeholder {{
+  color:{TEXT_MUTED}!important;
   font-family:'DM Sans',sans-serif!important;
   font-size:.83rem!important;
+  background:transparent!important;
 }}
+
+/* Dropdown chevron icon */
+section[data-testid="stSidebar"] .stMultiSelect [data-baseweb="select"] svg {{
+  fill:{TEXT_MUTED}!important;
+}}
+
+/* Selected tags/chips */
 section[data-testid="stSidebar"] .stMultiSelect [data-baseweb="tag"] {{
   background:{TAG_BG}!important;
   border:1px solid {TAG_BORDER}!important;
   border-radius:6px!important;
+  margin:2px!important;
 }}
-section[data-testid="stSidebar"] .stMultiSelect [data-baseweb="tag"] span {{
+section[data-testid="stSidebar"] .stMultiSelect [data-baseweb="tag"] span[role="presentation"] {{
   color:{TAG_TEXT}!important;
   font-size:.78rem!important;
+  font-family:'DM Sans',sans-serif!important;
 }}
-section[data-testid="stSidebar"] .stMultiSelect [data-baseweb="tag"] [data-baseweb="icon"] svg {{
+section[data-testid="stSidebar"] .stMultiSelect [data-baseweb="tag"] span[role="button"] svg {{
   fill:{TAG_TEXT}!important;
+  opacity:.7;
+}}
+section[data-testid="stSidebar"] .stMultiSelect [data-baseweb="tag"] span[role="button"]:hover svg {{
+  opacity:1;fill:#ef4444!important;
+}}
+
+/* Dropdown menu popup */
+section[data-testid="stSidebar"] [data-baseweb="popover"] [data-baseweb="menu"],
+[data-baseweb="popover"] ul[role="listbox"] {{
+  background:{BG_SIDEBAR}!important;
+  border:1px solid {BORDER_COLOR}!important;
+  border-radius:10px!important;
+  box-shadow:0 8px 32px rgba(0,0,0,0.18)!important;
+  padding:4px!important;
+}}
+[data-baseweb="popover"] li[role="option"] {{
+  background:transparent!important;
+  color:{TEXT_SECONDARY}!important;
+  font-family:'DM Sans',sans-serif!important;
+  font-size:.83rem!important;
+  border-radius:7px!important;
+  padding:.45rem .8rem!important;
+  transition:background .15s!important;
+}}
+[data-baseweb="popover"] li[role="option"]:hover,
+[data-baseweb="popover"] li[aria-selected="true"] {{
+  background:{TAG_BG}!important;
+  color:{TAG_TEXT}!important;
 }}
 
 /* ── Hero ── */
