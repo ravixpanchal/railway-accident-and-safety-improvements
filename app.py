@@ -197,13 +197,13 @@ section[data-testid="stSidebar"] .stMultiSelect [data-baseweb="tag"] [data-basew
   background:{BG_HERO};
   border:1px solid {BORDER_COLOR};
   border-radius:24px;
-  padding:3.2rem 2.5rem 2.8rem;
+  padding:3rem 3rem 2.6rem;
   margin-bottom:2rem;
   text-align:center;
   position:relative;
   overflow:hidden;
   animation:fadeUp .7s ease both;
-  box-shadow:0 0 60px {GLOW}, 0 1px 0 rgba(255,255,255,0.04) inset;
+  box-shadow:0 0 80px {GLOW}, 0 1px 0 rgba(255,255,255,0.04) inset;
 }}
 .hero::before{{
   content:'';position:absolute;inset:0;
@@ -216,7 +216,6 @@ section[data-testid="stSidebar"] .stMultiSelect [data-baseweb="tag"] [data-basew
 .hero::after{{
   content:'';position:absolute;top:0;left:10%;right:10%;height:2px;
   background:linear-gradient(90deg,transparent,{ACCENT},{ACCENT2},{ACCENT},transparent);
-  border-radius:0 0 2px 2px;
   filter:blur(1px);
 }}
 @keyframes fadeUp{{from{{opacity:0;transform:translateY(-18px);}}to{{opacity:1;transform:translateY(0);}}}}
@@ -227,41 +226,44 @@ section[data-testid="stSidebar"] .stMultiSelect [data-baseweb="tag"] [data-basew
   color:{TAG_TEXT};font-family:'Syne',sans-serif;
   font-size:.68rem;font-weight:700;letter-spacing:.14em;
   text-transform:uppercase;padding:.35rem 1rem;border-radius:50px;
-  margin-bottom:1.3rem;
+  margin-bottom:1.4rem;
   box-shadow:0 2px 12px {GLOW};
 }}
+
 .hero-title{{
   font-family:'Syne',sans-serif;
-  font-size:clamp(1.8rem,4vw,3rem);font-weight:800;
-  color:{TEXT_PRIMARY};line-height:1.2;letter-spacing:-.03em;
-  margin:0 0 1.4rem;display:flex;flex-direction:column;align-items:center;gap:.55rem;
+  font-size:clamp(2rem,4.5vw,3.2rem);
+  font-weight:800;
+  color:{TEXT_PRIMARY};
+  line-height:1.15;
+  letter-spacing:-.03em;
+  margin:0 0 1rem;
+  display:block;
 }}
 .hero-title .hl{{
   background:linear-gradient(135deg,{ACCENT} 0%,{ACCENT2} 100%);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
 }}
-.hero-title .hero-sub-inline{{
+.hero-subtitle{{
   font-family:'DM Sans',sans-serif;
-  font-size:clamp(.82rem,1.35vw,.98rem);
-  font-weight:400;letter-spacing:0;
+  font-size:clamp(.9rem,1.4vw,1.05rem);
+  font-weight:400;
   color:{TEXT_SECONDARY};
-  line-height:1.65;
-  max-width:560px;
-  padding:.55rem 1.1rem;
+  line-height:1.7;
+  max-width:580px;
+  margin:0 auto 1.6rem;
+  padding:.6rem 1.3rem;
   background:{OBS_BG};
   border:1px solid {BORDER_COLOR};
-  border-radius:10px;
-  margin-top:.2rem;
-  -webkit-text-fill-color:{TEXT_SECONDARY};
-  background-clip:unset;
-  -webkit-background-clip:unset;
+  border-radius:12px;
+  display:block;
 }}
-.hero-tags{{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;}}
+.hero-tags{{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin-top:.4rem;}}
 .hero-tag{{
   background:{TAG_BG};border:1px solid {TAG_BORDER};color:{TAG_TEXT};
   font-family:'JetBrains Mono',monospace;font-size:.72rem;font-weight:500;
   padding:.3rem .85rem;border-radius:50px;
-  transition:background .2s,border-color .2s;
+  transition:background .2s,border-color .2s,color .2s;
 }}
 .hero-tag:hover{{background:{ACCENT};border-color:{ACCENT};color:#fff;}}
 
@@ -413,15 +415,30 @@ section[data-testid="stSidebar"] .stMultiSelect [data-baseweb="tag"] [data-basew
   font-family:'JetBrains Mono',monospace;margin-top:.8rem;
 }}
 
+@media(max-width:1100px){{
+  .block-container{{padding:1.2rem 1.5rem 4rem!important;}}
+  .hero{{padding:2.5rem 2rem 2.2rem;}}
+  .hero-title{{font-size:clamp(1.7rem,3.5vw,2.5rem)!important;}}
+  .kpi-grid{{grid-template-columns:repeat(3,1fr);}}
+}}
 @media(max-width:768px){{
   .block-container{{padding:1rem .85rem 3rem!important;}}
-  .hero{{padding:2rem 1rem 1.8rem;}}
-  .kpi-grid{{grid-template-columns:repeat(2,1fr);}}
+  .hero{{padding:2rem 1.2rem 1.8rem;border-radius:18px;}}
+  .hero-title{{font-size:clamp(1.5rem,5vw,2rem)!important;}}
+  .hero-subtitle{{font-size:.88rem!important;padding:.5rem 1rem;max-width:100%;}}
+  .kpi-grid{{grid-template-columns:repeat(2,1fr);gap:.7rem;}}
   .stTabs [data-baseweb="tab"]{{font-size:.76rem!important;padding:.37rem .6rem!important;}}
+  .hero-tags{{gap:.4rem;}}
+  .hero-tag{{font-size:.68rem!important;padding:.25rem .65rem!important;}}
 }}
 @media(max-width:480px){{
-  .kpi-grid{{grid-template-columns:repeat(2,1fr);gap:.55rem;}}
-  .hero-title{{font-size:1.55rem;}}
+  .block-container{{padding:.75rem .6rem 2.5rem!important;}}
+  .hero{{padding:1.6rem .9rem 1.5rem;border-radius:14px;}}
+  .hero-title{{font-size:1.4rem!important;}}
+  .hero-subtitle{{font-size:.82rem!important;}}
+  .kpi-grid{{grid-template-columns:repeat(2,1fr);gap:.5rem;}}
+  .kpi-val{{font-size:1.35rem!important;}}
+  .eyebrow{{font-size:.6rem!important;}}
 }}
 
 #MainMenu,footer{{visibility:hidden;}}
@@ -573,11 +590,8 @@ if sel_types:     fdf = fdf[fdf["Occurrence type"].isin(sel_types)]
 st.markdown(f"""
 <div class="hero">
   <div class="eyebrow">🛡️ Data-Driven Safety Research</div>
-  <h1 class="hero-title">
-    <span>Railway Accident</span>
-    <span class="hl">Analysis Dashboard</span>
-    <span class="hero-sub-inline">Exploring {len(df):,} European railway investigations to surface patterns, causes, and safety opportunities across {df['Country'].nunique()} countries.</span>
-  </h1>
+  <h1 class="hero-title">Railway Accident <span class="hl">Analysis Dashboard</span></h1>
+  <div class="hero-subtitle">Exploring {len(df):,} European railway investigations to surface patterns, causes, and safety opportunities across {df['Country'].nunique()} countries.</div>
   <div class="hero-tags">
     <span class="hero-tag">ERAIL Database</span>
     <span class="hero-tag">2002 – 2025</span>
